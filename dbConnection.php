@@ -3,7 +3,7 @@
       $dbHostname = "mysql.beta.openlpos.org";
       $dbUsername = "geer";
       $dbPassword = "fuck off wanker";
-      $dbName     = "geer"; 
+      $dbName     = "geerdev"; 
        
       //  Make connection to database 
       //  If no connection made, display error Message          

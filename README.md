@@ -1,9 +1,3 @@
-  __ _  ___  ___ _ __ 
- / _` |/ _ \/ _ \ '__|
-| (_| |  __/  __/ |   
- \__, |\___|\___|_|   
- |___/                
-
 http://demo.geer.openlpos.org
 
 <wjkennedy@openlpos.org>

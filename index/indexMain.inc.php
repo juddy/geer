@@ -1,22 +1,15 @@
-<table width="400" cellspacing="0" cellpadding="3" bgcolor="#666666">
-<tr>
-<td><table width="100%" border="0" cellspacing="0" bgcolor="#666666">
-<tr height=35>
-<td bgcolor="#666666" align=left><h3>Manage Hardware Records</h3></td>
+<table width="400" cellspacing="3" cellpadding="3" bgcolor="#858587">
+<td bgcolor="#858587" align=left><h3>Manage Hardware Records</h3></td>
 </tr>
 <tr height=20>
-<td>
+<td align=left >
 <table cellspacing=0 cellpadding=0 border=0>
 <tr>
-<td width=20>
-</td>
-<td>
-<li><a href="./main/listMain.php">List All Hardware</a></li>
-<li><a href="./main/searchMainForm.php">Power Search Hardware</a></li>
-<li><a href="./main/enterNewMain.php">Enter New Hardware</a></li>
-<li><a href="./main/listGridMain.php">Grid Edit Hardware</a></li>
-<li><a href="./main/makeHostsFile.php">Generate Hosts File</a></li>
-</td>
+<br><a href="./main/listMain.php" class="nice radius large blue button">List All Hardware</a><br>
+<br><a href="./main/searchMainForm.php" class="nice radius large blue button">Power Search Hardware</a><br>
+<br><a href="./main/enterNewMain.php" class="nice radius large blue button">Enter New Hardware</a><br>
+<br><a href="./main/listGridMain.php" class="nice radius large blue button">Grid Edit Hardware</a><br>
+<br><a href="./main/makeHostsFile.php" class="nice radius large blue button">Generate Hosts File</a><br>
 </tr>
 </table>
 </td>
