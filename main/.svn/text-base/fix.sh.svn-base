@@ -1,5 +1,0 @@
-for file in $(grep "Medu" * | grep -v fix.sh | awk '{print $1}' | uniq | cut -d":" -f1 | uniq)
-  do
- echo $file 
- sed -i 's/Medu/My/g' $file
-done
