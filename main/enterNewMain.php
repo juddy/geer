@@ -19,8 +19,6 @@ $numberOfRows = MYSQL_NUMROWS($result);
 if ($numberOfRows==0) {  
 ?>
 
-Sorry. No records found !!
-
 <?php
 }
 else if ($numberOfRows>0) {
