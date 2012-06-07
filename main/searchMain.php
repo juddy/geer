@@ -133,8 +133,7 @@ $highlightColor = "#FFFF99";
 
 	while ($i<$numberOfRows)
 	{
-
-		if (($i%2)==0) { $bgColor = "#FFFFFF"; } else { $bgColor = "#C0C0C0"; }
+                if (($i%2)==0) { $bgColor = "#e1e9f3"; } else { $bgColor = "#afcef4"; }
 
 	$thisDatacenter = MYSQL_RESULT($result,$i,"Datacenter");
 	$thisDC_Hostname = MYSQL_RESULT($result,$i,"DC_Hostname");
@@ -155,6 +154,7 @@ $highlightColor = "#FFFF99";
 	$thisSlot = MYSQL_RESULT($result,$i,"Slot");
 	$thisDatacenter = highlightSearchTerms($thisDatacenter, $thisKeyword, $highlightColor); 
 	$thisDC_Hostname = highlightSearchTerms($thisDC_Hostname, $thisKeyword, $highlightColor); 
+    $thisregDC_Hostname = MYSQL_RESULT($result,$i,"DC_Hostname");
 	$thisClql_Hostname = highlightSearchTerms($thisClql_Hostname, $thisKeyword, $highlightColor); 
 	$thisDomain_Name = highlightSearchTerms($thisDomain_Name, $thisKeyword, $highlightColor); 
 	$thisCNAME = highlightSearchTerms($thisCNAME, $thisKeyword, $highlightColor); 
@@ -172,6 +172,7 @@ $highlightColor = "#FFFF99";
 	$thisSlot = highlightSearchTerms($thisSlot, $thisKeyword, $highlightColor); 
 
 ?>
+
 	<TR BGCOLOR="<? echo $bgColor; ?>">
 		<TD><? echo $thisDatacenter; ?></TD>
 		<TD><? echo $thisDC_Hostname; ?></TD>
@@ -190,8 +191,8 @@ $highlightColor = "#FFFF99";
 		<TD><? echo $thisRow; ?></TD>
 		<TD><? echo $thisRack; ?></TD>
 		<TD><? echo $thisSlot; ?></TD>
-	<TD><a href="editMain.php?DC_HostnameField=<? echo $thisDC_Hostname; ?>">Edit</a></TD>
-	<TD><a href="confirmDeleteMain.php?DC_HostnameField=<? echo $thisDC_Hostname; ?>">Delete</a></TD>
+    <TD><a href="editMain.php?DC_HostnameField=<? echo $thisregDC_Hostname; ?>"=<? echo $thisregDC_Hostname; ?>"><img src="../common/edit-button.png"</a></TD>
+    <TD><a href="<? echo $_SERVER['PHP_SELF']; ?>?action=Delete&thisDC_HostnameField=<? echo $thisregDC_Hostname; ?>"><img src="../common/delete-button.png"</a></TD>
 	</TR>
 <?
 		$i++;

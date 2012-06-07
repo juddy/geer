@@ -59,10 +59,9 @@ else if ($numberOfRows>0) {
 <br>
 
 <br><br>
+<h1>Generated /etc/hosts</h1>
+<p>This file includes all hosts known to the system.</p>
 <TABLE CELLSPACING="0" CELLPADDING="3" BORDER="0" WIDTH="100%">
-	<TR>
-<h3>Generated /etc/hosts</h3>
-<TD>
 			<a href="<? echo $PHP_SELF; ?>?sortBy=Public_IP&sortOrder=<? echo $newSortOrder; ?>&startLimit=<? echo $startLimit; ?>&rows=<? echo $limitPerPage; ?>">
 				<B>IP</B>
 			</a>

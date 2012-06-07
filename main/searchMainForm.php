@@ -2,12 +2,12 @@
 include_once("../common/dbConnection.php");
 include_once("../common/header.php");
 ?>
-<h2>Power Search</h2>
-The power search will search all fields in the hardware table.<br> It will match entire strings or parts of your string. <br><br>
+<h3>Search</h3>
+Your search will attempt to match on any field in the 'main' hardware table.<br> It will match entire strings or parts of your string. <br><br>
 <form name="mainPowerSearchForm" method="POST" action="searchMain.php">
 <table cellspacing="0" cellpadding="4" border="0" width="300">
 <tr>
-<td align=right><font color=red><b>keyword:</font></b></td>
+<td align=left><h3><font color=red><b>keyword:</font></h3></b></td>
 <td><input type="text" name="keyword" value=""></td>
 </tr>
 <tr>

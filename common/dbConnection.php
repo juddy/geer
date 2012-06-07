@@ -1,8 +1,8 @@
 <?php
 
-      $dbHostname = "mysql.beta.openlpos.org";
-      $dbUsername = "geer";
-      $dbPassword = "fuck off wanker";
+      $dbHostname = "mysql.yourhost.com
+      $dbUsername = "geeruser";
+      $dbPassword = "geerpass";
       $dbName     = "geer"; 
        
       //  Make connection to database 

@@ -46,8 +46,9 @@ else if ($numberOfRows>0) {
 
 }
 ?>
-<h1>Enter New Hardware</h1>
-<form name="mainEnterForm" method="POST" action="insertNewMain.php">
+
+<h2>Update Hardware</h2>
+<form name="mainUpdateForm" method="POST" action="updateMain.php">
 
 <table cellspacing="2" cellpadding="2" border="0" width="800">
 	<tr valign="top" height="20">
@@ -122,22 +123,22 @@ else if ($numberOfRows>0) {
 	</tr>
 	<tr valign="top" height="20">
 		<td align="left"><h3> Service or Asset Tag:</h3></td>
-		<td align="left">Asset or Service tag (10 Characters)</td>
+		<td align="left">Asset or Service tag for <?=$thisClql_Hostname?>. (10 Characters)</td>
 		<td> <input type="text" name="thisServiceTagField" size="10" value="<? echo $thisServiceTag; ?>">  </td> 
 	</tr>
 	<tr valign="top" height="20">
 		<td align="left"><h3> Row:</h3></td>
-		<td align="left">Cabinet row at Datacenter above?></td>
+		<td align="left">Cabinet row at <? echo $thisDatacenter ?> for <? echo $thisClql_Hostname; ?></td>
 		<td> <input type="text" name="thisRowField" size="70" value="<? echo $thisRow; ?>">  </td> 
 	</tr>
 	<tr valign="top" height="20">
 		<td align="left"><h3> Rack:</h3></td>
-		<td align="left">Rack unit in row referenced above:</td>
+		<td align="left">Rack unit in row <? echo $thisRow ?> for <? echo $thisClql_Hostname; ?></td>
 		<td> <input type="text" name="thisRackField" size="70" value="<? echo $thisRack; ?>">  </td> 
 	</tr>
 	<tr valign="top" height="20">
 		<td align="left"><h3>Blade or Rack Slot:</h3></td>
-		<td align="left">Slot position for rack or chassis above:</td>
+		<td align="left">Rack <? echo $thisRack ?> Row <? echo $thisRow; ?> Slot:</td>
 		<td> <input type="text" name="thisSlotField" size="70" value="<? echo $thisSlot; ?>">  </td> 
 	</tr>
 </table>

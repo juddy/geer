@@ -3,50 +3,36 @@ include_once("../common/dbConnection.php");
 include_once("../common/header.php");
 ?>
 <?
-$initStartLimit = 0;
-$limitPerPage = 20;
-
-$startLimit = $_REQUEST['startLimit'];
-$numberOfRows = $_REQUEST['rows'];
-$sortBy = $_REQUEST['sortBy'];
-$sortOrder = $_REQUEST['sortOrder'];
-
-if ($startLimit=="")
+function highlightSearchTerms($fullText, $searchTerm, $bgcolor='#FFFF99')
 {
-		$startLimit = $initStartLimit;
+	if (empty($searchTerm))
+	{
+		return $fullText;
+	}
+	else
+	{
+		$start_tag = "<span style=\"background-color: $bgcolor\">";
+		$end_tag = "</span>";
+		$highlighted_results = $start_tag . $searchTerm . $end_tag;
+		return eregi_replace($searchTerm, $highlighted_results, $fullText);
+	}
 }
 
-if ($numberOfRows=="")
-{
-		$numberOfRows = $limitPerPage;
-}
-
-if ($sortOrder=="")
-{
-		$sortOrder  = "DESC";
-}
-if ($sortOrder == "DESC") { $newSortOrder = "ASC"; } else  { $newSortOrder = "DESC"; }
-$limitQuery = " LIMIT ".$startLimit.",".$numberOfRows;
-$nextStartLimit = $startLimit + $limitPerPage;
-$previousStartLimit = $startLimit - $limitPerPage;
-
-if ($sortBy!="")
-{
-		$orderByQuery = " ORDER BY ".$sortBy." ".$sortOrder;
-}
-
-
-$sql = "SELECT   * FROM main".$orderByQuery.$limitQuery;
-$result = MYSQL_QUERY($sql);
+?>
+<?php
+$thisKeyword = $_REQUEST['keyword'];
+?>
+<?
+$sqlQuery = "SELECT *  FROM main WHERE Datacenter like '%$thisKeyword%'  OR DC_Hostname like '%$thisKeyword%'  OR Clql_Hostname like '%$thisKeyword%'  OR Domain_Name like '%$thisKeyword%'  OR CNAME like '%$thisKeyword%'  OR Public_IP like '%$thisKeyword%'  OR Network like '%$thisKeyword%'  OR DMZ_IP like '%$thisKeyword%'  OR Mgmt_IP like '%$thisKeyword%'  OR Public_MAC like '%$thisKeyword%'  OR DMZ_MAC like '%$thisKeyword%'  OR MGMT_MAC like '%$thisKeyword%'  OR Description like '%$thisKeyword%'  OR ServiceTag like '%$thisKeyword%'  OR Row like '%$thisKeyword%'  OR Rack like '%$thisKeyword%'  OR Slot like '%$thisKeyword%' ";
+$result = MYSQL_QUERY($sqlQuery);
 $numberOfRows = MYSQL_NUM_ROWS($result);
-
 
 ?>
 <?
 if ($numberOfRows==0) {  
 ?>
 
-Sorry. No records found !!
+ Sorry. No records found !!
 
 <?
 }
@@ -54,24 +40,6 @@ else if ($numberOfRows>0) {
 
 	$i=0;
 ?>
-
-
-<h1>Spreadsheet View</h1>
-<br>
-<?
-if ($_REQUEST['startLimit'] != "")
-{
-?>
-
-<a href="<? echo  $_SERVER['PHP_SELF']; ?>?startLimit=<? echo $previousStartLimit; ?>&limitPerPage=<? echo $limitPerPage; ?>&sortBy=<? echo $sortBy; ?>&sortOrder=<? echo $sortOrder; ?>" class="large blue nice button" >Previous <? echo $limitPerPage; ?> </a>
-<? } ?>
-<?
-if ($numberOfRows == $limitPerPage)
-{
-?>
-<a href="<? echo $_SERVER['PHP_SELF']; ?>?startLimit=<? echo $nextStartLimit; ?>&limitPerPage=<? echo $limitPerPage; ?>&sortBy=<? echo $sortBy; ?>&sortOrder=<? echo $sortOrder; ?>" class="large blue nice button" >Next <? echo $limitPerPage; ?> </a>
-<? } ?>
-<br><br>
 <TABLE CELLSPACING="0" CELLPADDING="3" BORDER="0" WIDTH="100%">
 	<TR>
 		<TD>
@@ -161,10 +129,12 @@ if ($numberOfRows == $limitPerPage)
 </TD>
 	</TR>
 <?
+$highlightColor = "#FFFF99"; 
+
 	while ($i<$numberOfRows)
 	{
 
-		if (($i%2)==0) { $bgColor = "#e1e9f3"; } else { $bgColor = "#afcef4"; }
+		if (($i%2)==0) { $bgColor = "#FFFFFF"; } else { $bgColor = "#C0C0C0"; }
 
 	$thisDatacenter = MYSQL_RESULT($result,$i,"Datacenter");
 	$thisDC_Hostname = MYSQL_RESULT($result,$i,"DC_Hostname");
@@ -183,11 +153,33 @@ if ($numberOfRows == $limitPerPage)
 	$thisRow = MYSQL_RESULT($result,$i,"Row");
 	$thisRack = MYSQL_RESULT($result,$i,"Rack");
 	$thisSlot = MYSQL_RESULT($result,$i,"Slot");
+	$thisDatacenter = highlightSearchTerms($thisDatacenter, $thisKeyword, $highlightColor); 
+	$thisDC_Hostname = highlightSearchTerms($thisDC_Hostname, $thisKeyword, $highlightColor); 
+	$thisClql_Hostname = highlightSearchTerms($thisClql_Hostname, $thisKeyword, $highlightColor); 
+	$thisDomain_Name = highlightSearchTerms($thisDomain_Name, $thisKeyword, $highlightColor); 
+	$thisCNAME = highlightSearchTerms($thisCNAME, $thisKeyword, $highlightColor); 
+	$thisPublic_IP = highlightSearchTerms($thisPublic_IP, $thisKeyword, $highlightColor); 
+	$thisNetwork = highlightSearchTerms($thisNetwork, $thisKeyword, $highlightColor); 
+	$thisDMZ_IP = highlightSearchTerms($thisDMZ_IP, $thisKeyword, $highlightColor); 
+	$thisMgmt_IP = highlightSearchTerms($thisMgmt_IP, $thisKeyword, $highlightColor); 
+	$thisPublic_MAC = highlightSearchTerms($thisPublic_MAC, $thisKeyword, $highlightColor); 
+	$thisDMZ_MAC = highlightSearchTerms($thisDMZ_MAC, $thisKeyword, $highlightColor); 
+	$thisMGMT_MAC = highlightSearchTerms($thisMGMT_MAC, $thisKeyword, $highlightColor); 
+	$thisDescription = highlightSearchTerms($thisDescription, $thisKeyword, $highlightColor); 
+	$thisServiceTag = highlightSearchTerms($thisServiceTag, $thisKeyword, $highlightColor); 
+	$thisRow = highlightSearchTerms($thisRow, $thisKeyword, $highlightColor); 
+	$thisRack = highlightSearchTerms($thisRack, $thisKeyword, $highlightColor); 
+	$thisSlot = highlightSearchTerms($thisSlot, $thisKeyword, $highlightColor); 
 
 ?>
+
+
+
+
+
 	<TR BGCOLOR="<? echo $bgColor; ?>">
 		<TD><? echo $thisDatacenter; ?></TD>
-		<TD> <a href="editMain.php?DC_HostnameField=<? echo $thisDC_Hostname; ?>"><? echo $thisDC_Hostname; ?></a> </TD>
+		<TD><? echo $thisDC_Hostname; ?></TD>
 		<TD><? echo $thisClql_Hostname; ?></TD>
 		<TD><? echo $thisDomain_Name; ?></TD>
 		<TD><? echo $thisCNAME; ?></TD>
@@ -203,8 +195,8 @@ if ($numberOfRows == $limitPerPage)
 		<TD><? echo $thisRow; ?></TD>
 		<TD><? echo $thisRack; ?></TD>
 		<TD><? echo $thisSlot; ?></TD>
-	<TD><a href="editMain.php?DC_HostnameField=<? echo $thisDC_Hostname; ?>"><img src="../common/edit-button.png"></a></TD>
-	<TD><a href="confirmDeleteMain.php?DC_HostnameField=<? echo $thisDC_Hostname; ?>"><img src="../common/delete-button.png"></a></TD>
+    <TD><a href="<? echo $_SERVER['PHP_SELF']; ?>?action=Edit&thisDC_HostnameField=<? echo $thisDC_Hostname; ?>"><img src="../common/edit-button.png"</a></TD>
+    <TD><a href="<? echo $_SERVER['PHP_SELF']; ?>?action=Delete&thisDC_HostnameField=<? echo $thisDC_Hostname; ?>"><img src="../common/delete-button.png"</a></TD>
 	</TR>
 <?
 		$i++;
@@ -212,24 +204,6 @@ if ($numberOfRows == $limitPerPage)
 	} // end while loop
 ?>
 </TABLE>
-
-
-<br>
-<?
-if ($_REQUEST['startLimit'] != "")
-{
-?>
-
-<a href="<? echo  $_SERVER['PHP_SELF']; ?>?startLimit=<? echo $previousStartLimit; ?>&limitPerPage=<? echo $limitPerPage; ?>&sortBy=<? echo $sortBy; ?>&sortOrder=<? echo $sortOrder; ?>">Previous <? echo $limitPerPage; ?> </a>
-<? } ?>
-<?
-if ($numberOfRows == $limitPerPage)
-{
-?>
-<a href="<? echo $_SERVER['PHP_SELF']; ?>?startLimit=<? echo $nextStartLimit; ?>&limitPerPage=<? echo $limitPerPage; ?>&sortBy=<? echo $sortBy; ?>&sortOrder=<? echo $sortOrder; ?>">Next <? echo $limitPerPage; ?> </a>
-<? } ?>
-
-<br><br>
 <?
 } // end of if numberOfRows > 0 
  ?>
