@@ -29,6 +29,15 @@ Abundant.
 
 ***
 
+# USE:
+
+Create a database for use with Geer.  A dump is available in geer-data.sql.gz.  Restoring this data creates a table 'main'.  The 'geer' database and 'main' table should be available to a 'geer' user.
+
+Change common/dbConnection.php to suit your needs.  
+
+
+***
+
 # TODO:
 
 Incorporate contemporary CSS and JS frameworks
