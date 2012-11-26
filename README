@@ -1,3 +1,9 @@
+  __ _  ___  ___ _ __ 
+ / _` |/ _ \/ _ \ '__|
+| (_| |  __/  __/ |   
+ \__, |\___|\___|_|   
+ |___/                
+
 http://demo.geer.openlpos.org
 
 <wjkennedy@openlpos.org>
@@ -26,15 +32,6 @@ Demo database is included, schema below
 # BUGS:
 
 Abundant.
-
-***
-
-# USE:
-
-Create a database for use with Geer.  A dump is available in geer-data.sql.gz.  Restoring this data creates a table 'main'.  The 'geer' database and 'main' table should be available to a 'geer' user.
-
-Change common/dbConnection.php to suit your needs.  
-
 
 ***
 

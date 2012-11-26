@@ -4,7 +4,6 @@ body {
 margin: 0;
 font-family: lucida, verdana, arial, helvetica, sans-serif;
 color: black;
-background-color: #858587;
 font-size: 10px;}
 
 /* Banner across top of page that says the name of the whole site */
@@ -24,7 +23,7 @@ font-family: Lucida, Verdana, Helvetica, Arial, sans-serif;
 /* Heading level 1 is not contained in main-text. */
 
 h1 {
-line-height: 22px;
+line-height: 14px;
 margin-bottom: 15px;
 margin-right: 60px;
 font-size: 18px;
@@ -40,17 +39,17 @@ text-shadow: 1px 1px 1px #000;
 
 h2 
 {
-line-height: 22px;
+line-height: 14px;
 font-size: 18px;
 color: #ffffff;
 font-weight: bold;
-line-height: 22px;
+line-height: 14px;
 text-shadow: 1px 1px 1px #000;
 }
 
 h3  
 { 
-line-height: 22px;
+line-height: 14px;
 font-size: 18px; 
 font-family: Lucida, Verdana, Helvetica, Arial, sans-serif;
 color: #cccccc; 
@@ -118,7 +117,7 @@ text-align: center;
 #left-menu p {
 padding-right: 0px;
 margin-bottom: 5px;
-font-size: 14px;
+font-size: 12px;
 line-height: 25px;
 }
 
@@ -203,7 +202,7 @@ form {
 	}
 	
 	.button.nice { 
-		background: #00a6fc;
+		background: #00a6fc url(../images/misc/button-gloss.png) repeat-x 0 -31px;
 		-moz-box-shadow: inset 0 1px 0 rgba(255,255,255,.5);
 		-webkit-box-shadow: inset 0 1px 0 rgba(255,255,255,.5);
 		box-shadow: inset 0 1px 0 rgba(255,255,255,.5);
@@ -240,7 +239,7 @@ form {
 	}
 	
 	/* Sizes ---------- */
-	.tiny.button			{ font-size: 10px; padding: 6px 14px 8px; width: auto; }
+	.tiny.button			{ font-size: 10px; padding: 6px 12px 8px; width: auto; }
 	.small.button 			{ font-size: 11px; padding: 8px 20px 10px; width: auto; }
 	.medium.button 			{ font-size: 13px; width: auto; }
 	.large.button 			{ font-size: 18px; padding: 11px 48px 13px; width: auto; }
@@ -285,7 +284,7 @@ form {
 	/* Correct FF button padding */
 	@-moz-document url-prefix("http://") {
 		input[type=submit].button::-moz-focus-inner, button.button::-moz-focus-inner { border: 0; padding: 0; }
-		input[type=submit].tiny.button		{ padding: 5px 14px 7px; }
+		input[type=submit].tiny.button		{ padding: 5px 12px 7px; }
 		input[type=submit].small.button		{ padding: 7px 20px 8px; }
 		input[type=submit].medium.button	{ padding: 8px 34px 9px; }
 		input[type=submit].large.button		{ padding: 9px 48px 10px; }
@@ -298,3 +297,143 @@ Registration/Login Form by html-form-guide.com
 You can customize all the aspects of the form in this style sheet
 */
 
+#fg_membersite fieldset
+{
+   width: 600px;
+   padding:30px;
+   border:1px solid #ccc;
+-moz-border-radius: 10px;
+-webkit-border-radius: 10px;
+-khtml-border-radius: 10px;
+border-radius: 10px;   
+}
+
+#fg_membersite legend, #fg_membersite h2
+{
+  font-family: Lucida, Verdana, Helvetica, Arial, sans-serif;
+   font-size: 14px;
+   font-weight:bold;
+   color:#333;
+}
+
+#fg_membersite label
+{
+  font-family: Lucida, Verdana, Helvetica, Arial, sans-serif;
+   font-size:14px;
+   font-weight: bold;
+}
+
+#fg_membersite input[type="text"],#fg_membersite textarea,
+#fg_membersite input[type="password"]
+{
+  font-family: Lucida, Verdana, Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  line-height:140%;
+  color : #000; 
+  padding : 3px; 
+  border : 3px solid #999;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -khtml-border-radius: 5px;
+    border-radius: 5px;
+
+}
+
+#fg_membersite input[type="text"],
+#fg_membersite input[type="password"]
+{
+  height:30px;
+  width:220px;
+}
+
+ #fg_membersite #scaptcha
+{
+  width:60px;
+  height:30px;
+}
+
+#fg_membersite textarea
+{
+  height:120px;
+  width:310px;
+}
+
+#fg_membersite input[type="text"]:focus,
+#fg_membersite textarea:focus
+{
+  color : #009;
+  border : 1px solid #990000;
+  background-color : #858587;
+  font-weight:bold;
+}
+
+#fg_membersite .container
+{
+   margin-top:8px;
+   margin-bottom: 10px;
+}
+
+#fg_membersite .error
+{
+   font-family: Lucida, Verdana, Helvetica, Arial, sans-serif;
+   font-size: 14px;
+   color: #900;
+   background-color : #ffff00;
+}
+
+#fg_membersite #register_password_errorloc
+{
+    clear:both;
+}
+
+#fg_membersite  fieldset#antispam
+{
+   padding:2px;
+   border-top:1px solid #EEE;
+   border-left:0;
+   border-right:0;
+   border-bottom:0;
+   width:350px;
+}
+
+#fg_membersite fieldset#antispam legend
+{
+  font-family: Lucida, Verdana, Helvetica, Arial, sans-serif;
+   font-size: 16px;
+   font-weight:bold;
+   color:#333;   
+}
+
+#fg_membersite .short_explanation
+{
+  font-family: Lucida, Verdana, Helvetica, Arial, sans-serif;
+   font-size: 12px;
+   color:#333;   
+}
+
+/* spam_trap: This input is hidden. This is here to trick the spam bots*/
+#fg_membersite .spmhidip
+{
+   display:none;
+   width:10px;
+   height:3px;
+}
+#fg_membersite #fg_crdiv
+{
+  font-family: Lucida, Verdana, Helvetica, Arial, sans-serif;
+   font-size: 12px;
+   opacity: .2;
+   -moz-opacity: .2;
+   filter: alpha(opacity=20);   
+}
+#fg_membersite  #fg_crdiv p
+{
+    display:none;
+}
+
+#fg_membersite_content
+{
+    font-family : Arial, sans-serif;
+    font-size: 0.9em;
+    line-height: 150%
+}

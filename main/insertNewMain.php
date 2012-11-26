@@ -1,8 +1,14 @@
 <?php
 include_once("../common/dbConnection.php");
 include_once("../common/header.php");
-?>
-<?php
+require_once("./include/membersite_config.php");
+
+if(!$fgmembersite->CheckLogin())
+{
+    $fgmembersite->RedirectToURL("login.php");
+    exit;
+}
+
 	// Retreiving Form Elements from Form
 	$thisDatacenter = addslashes($_REQUEST['thisDatacenterField']);
 	$thisDC_Hostname = addslashes($_REQUEST['thisDC_HostnameField']);

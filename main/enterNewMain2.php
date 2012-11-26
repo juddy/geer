@@ -47,10 +47,10 @@ else if ($numberOfRows>0) {
 }
 ?>
 
-<h1>Edit/Update Details</h1>
+<h2>Update Hardware</h2>
 <form name="mainUpdateForm" method="POST" action="updateMain.php">
 
-<table cellspacing="2" cellpadding="2" border="0" width="800" background="#858587">
+<table cellspacing="2" cellpadding="2" border="0" width="800">
 	<tr valign="top" height="20">
 		<td align="left"><h3> Datacenter:</h3></td>
 		<td align="left">Datacenter name for this host's location. i.e., 'Rackspace'</td>
@@ -143,9 +143,8 @@ else if ($numberOfRows>0) {
 	</tr>
 </table>
 
-<input class="small blue nice button" type="submit" name="submitUpdateMainForm" value="Update Hardware">
-<input class="small red nice button" type="reset" name="resetForm" value="Clear Form">
-
+<input type="image" src="../common/add-button.png" name="submitEnterMainForm" value="Submit New Record" >
+<input type="image" src="../common/reset-button.png" name="resetForm" value="Clear Form" >
 </form>
 
 <?php

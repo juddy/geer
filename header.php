@@ -1,5 +1,5 @@
-<HTML
-><HEAD>
+<HTML>
+<HEAD>
 <TITLE></TITLE>
 <link rel="stylesheet" href="common/style.css" type="text/css">
 <link rel="stylesheet" href="stylesheets/foundation.css">

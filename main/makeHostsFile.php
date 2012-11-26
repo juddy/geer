@@ -1,8 +1,14 @@
 <?php
 include_once("../common/dbConnection.php");
 include_once("../common/header.php");
-?>
-<?
+require_once("./include/membersite_config.php");
+
+if(!$fgmembersite->CheckLogin())
+{
+    $fgmembersite->RedirectToURL("login.php");
+    exit;
+}
+
 $initStartLimit = 0;
 $limitPerPage = 999;
 
@@ -59,10 +65,9 @@ else if ($numberOfRows>0) {
 <br>
 
 <br><br>
+<h1>Generated /etc/hosts</h1>
+<p>This file includes all hosts known to the system.</p>
 <TABLE CELLSPACING="0" CELLPADDING="3" BORDER="0" WIDTH="100%">
-	<TR>
-<h3>Generated /etc/hosts</h3>
-<TD>
 			<a href="<? echo $PHP_SELF; ?>?sortBy=Public_IP&sortOrder=<? echo $newSortOrder; ?>&startLimit=<? echo $startLimit; ?>&rows=<? echo $limitPerPage; ?>">
 				<B>IP</B>
 			</a>

@@ -10,8 +10,13 @@ font-size: 10px;}
 /* Banner across top of page that says the name of the whole site */
 
 main-title {
+margin-bottom: 0; 
+margin-left: 0;
+margin-right: 0;
 padding-top: 8px;
+padding-bottom: 0;
 padding-left: 25px;
+padding-right: 0;
 background-color: #858587;
 #border-top: 1px black solid;
 #border-bottom: 1px black solid;
@@ -24,11 +29,9 @@ font-family: Lucida, Verdana, Helvetica, Arial, sans-serif;
 /* Heading level 1 is not contained in main-text. */
 
 h1 {
-line-height: 22px;
-margin-bottom: 15px;
-margin-right: 60px;
-font-size: 18px;
-color: #ffffff;
+text-shadow: 1px 1px 1px #999;
+font-size: 20px;
+color: #000000;
 border-bottom: 1px #999 dashed;
 padding-bottom: 10px;
 padding-top: 0;
@@ -36,25 +39,33 @@ padding-left: 0;
 padding-right: 0;
 font-weight: bold;
 text-shadow: 1px 1px 1px #000;
+text-shadow: -1px -1px -1px #fff;
 }
 
 h2 
 {
-line-height: 22px;
-font-size: 18px;
-color: #ffffff;
+margin-top: 0;
+margin-bottom: 15px;
+margin-left: 0;
+margin-right: 0;
+padding: 0;
+font-size: 20;
+color: #000066;
 font-weight: bold;
-line-height: 22px;
-text-shadow: 1px 1px 1px #000;
 }
 
 h3  
 { 
-line-height: 22px;
+margin-top: 0; 
+margin-bottom: 15px; 
+margin-left: 0; 
+margin-right: 0; 
+padding: 0; 
 font-size: 18px; 
 font-family: Lucida, Verdana, Helvetica, Arial, sans-serif;
-color: #cccccc; 
+color: #000; 
 text-shadow: 1px 1px 1px #000;
+text-shadow: -1px -1px -1px #fff;
 font-weight: bold; 
 } 
 
@@ -62,10 +73,9 @@ font-weight: bold;
 /* Styles for the main text on the page. */
 
 main-text {
+background-color: #858587;
 margin-top: 0;
 margin-bottom: 0px;
-margin-left: 0px;
-margin-right: 50px;
 height: 180px;}
 
 p, ul, ol {
@@ -85,6 +95,7 @@ margin-left: 25px;
 }
 
 a:link, a:visited {
+w
 color: #ffffff;
 text-decoration: none;
 font-weight: normal;
@@ -92,7 +103,7 @@ text-shadow: 1px 1px 1px #000;
 }
 
 a:hover {
-color: #ff6600;
+color: #cccccc;
 text-decoration: none;
 }
 
@@ -155,6 +166,7 @@ text-decoration: underline;
 
 
 td, th {
+
 	font-family: Lucida, Verdana, Arial, Helvetica, sans-serif;
         text-align: left
 	font-size: 10pt;
@@ -203,7 +215,7 @@ form {
 	}
 	
 	.button.nice { 
-		background: #00a6fc;
+		background: #00a6fc url(../images/misc/button-gloss.png) repeat-x 0 -31px;
 		-moz-box-shadow: inset 0 1px 0 rgba(255,255,255,.5);
 		-webkit-box-shadow: inset 0 1px 0 rgba(255,255,255,.5);
 		box-shadow: inset 0 1px 0 rgba(255,255,255,.5);
@@ -243,7 +255,7 @@ form {
 	.tiny.button			{ font-size: 10px; padding: 6px 14px 8px; width: auto; }
 	.small.button 			{ font-size: 11px; padding: 8px 20px 10px; width: auto; }
 	.medium.button 			{ font-size: 13px; width: auto; }
-	.large.button 			{ font-size: 18px; padding: 11px 48px 13px; width: auto; }
+	.large.button 			{ weight: bold; font-size: 18px; padding: 11px 48px 13px; width: auto; }
 
 	/* Nice Sizes ---------- */
 	.nice.tiny.button 		{ background-position: 0 -37px; }
@@ -292,9 +304,4 @@ form {
 	}
 
 
-
-/*
-Registration/Login Form by html-form-guide.com
-You can customize all the aspects of the form in this style sheet
-*/
 

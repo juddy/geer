@@ -1,84 +1,146 @@
 <?php
 include_once("../common/dbConnection.php");
 include_once("../common/header.php");
+require_once("../include/membersite_config.php");
+
+if(!$fgmembersite->CheckLogin())
+{
+    $fgmembersite->RedirectToURL("login.php");
+    exit;
+}
+
+function slash_notation($thisPublic_IP, $mask) { 
+  return $thisPublic_IP."/".strlen(preg_replace("/0/", "", decbin(ip2long($mask)))); 
+} 
+
+$thisDC_Hostname = $_REQUEST['DC_HostnameField']
+$sql = "SELECT * FROM main WHERE DC_Hostname = '$thisDC_Hostname'";
+$result = MYSQL_QUERY($sql);
+$numberOfRows = MYSQL_NUMROWS($result);
+if ($numberOfRows==0) {  
+
+}
+else if ($numberOfRows>0) {
+
+	$i=0;
+	$thisDatacenter = MYSQL_RESULT($result,$i,"Datacenter");
+	$thisDC_Hostname = MYSQL_RESULT($result,$i,"DC_Hostname");
+	$thisClql_Hostname = MYSQL_RESULT($result,$i,"Clql_Hostname");
+	$thisDomain_Name = MYSQL_RESULT($result,$i,"Domain_Name");
+	$thisCNAME = MYSQL_RESULT($result,$i,"CNAME");
+	$thisPublic_IP = MYSQL_RESULT($result,$i,"Public_IP");
+	$thisNetwork = MYSQL_RESULT($result,$i,"Network");
+	$thisDMZ_IP = MYSQL_RESULT($result,$i,"DMZ_IP");
+	$thisMgmt_IP = MYSQL_RESULT($result,$i,"Mgmt_IP");
+	$thisPublic_MAC = MYSQL_RESULT($result,$i,"Public_MAC");
+	$thisDMZ_MAC = MYSQL_RESULT($result,$i,"DMZ_MAC");
+	$thisMGMT_MAC = MYSQL_RESULT($result,$i,"MGMT_MAC");
+	$thisDescription = MYSQL_RESULT($result,$i,"Description");
+	$thisServiceTag = MYSQL_RESULT($result,$i,"ServiceTag");
+	$thisRow = MYSQL_RESULT($result,$i,"Row");
+	$thisRack = MYSQL_RESULT($result,$i,"Rack");
+	$thisSlot = MYSQL_RESULT($result,$i,"Slot");
+
+}
 ?>
-<h2>Enter New Hardware</h2>
+<h1>Enter New Hardware</h1>
 <form name="mainEnterForm" method="POST" action="insertNewMain.php">
 
 <table cellspacing="2" cellpadding="2" border="0" width="800">
 	<tr valign="top" height="20">
-		<td align="left"> <b> Datacenter :  </b> </td>
-		<td> <input type="text" name="thisDatacenterField" size="10" value="">  </td> 
+		<td align="left"><h3> Datacenter:</h3></td>
+		<td align="left">Datacenter name for this host's location. i.e., 'Rackspace'</td>
+		<td> <input type="text" name="thisDatacenterField" size="10" value="<? echo $thisDatacenter; ?>">  </td> 
 	</tr>
 	<tr valign="top" height="20">
-		<td align="left"> <b> DC_Hostname :  </b> </td>
-		<td> <input type="text" name="thisDC_HostnameField" size="50" value="">  </td> 
+		<td align="left"><h3> Datacenter Hostname:</h3></td>
+		<td align="left">Hostname used by the DC above in trouble tickets, etc.</td>
+		<td> <input type="text" name="thisDC_HostnameField" size="70" value="<? echo $thisDC_Hostname; ?>">  </td> 
 	</tr>
 	<tr valign="top" height="20">
-		<td align="left"> <b> Clql_Hostname :  </b> </td>
-		<td> <input type="text" name="thisClql_HostnameField" size="50" value="">  </td> 
+		<td align="left"><h3> Colloquial Hostname:</h3></td>
+		<td align="left">Hostname used internally to reference this host</td>
+		<td> <input type="text" name="thisClql_HostnameField" size="70" value="<? echo $thisClql_Hostname; ?>">  </td> 
 	</tr>
 	<tr valign="top" height="20">
-		<td align="left"> <b> Domain_Name :  </b> </td>
-		<td> <input type="text" name="thisDomain_NameField" size="50" value="">  </td> 
+		<td align="left"><h3> Domain Name:</h3></td>
+		<td align="left">DNS Name for the an implied preferred interface</td>
+		<td> <input type="text" name="thisDomain_NameField" size="70" value="<? echo $thisDomain_Name; ?>">  </td> 
 	</tr>
 	<tr valign="top" height="20">
-		<td align="left"> <b> CNAME :  </b> </td>
-		<td> <input type="text" name="thisCNAMEField" size="50" value="">  </td> 
+		<td align="left"><h3> DNS CNAME:</h3></td>
+		<td align="left">Canonical name, per <a href="http://tools.ietf.org/html/rfc1034">RFC1034</a> used by this host</td>
+		<td> <input type="text" name="thisCNAMEField" size="70" value="<? echo $thisCNAME; ?>">  </td> 
 	</tr>
 	<tr valign="top" height="20">
-		<td align="left"> <b> Public_IP :  </b> </td>
-		<td> <input type="text" name="thisPublic_IPField" size="50" value="">  </td> 
+		<td align="left"><h3> Public IP:</h3></td>
+		<td align="left">IP address for the publically-available services on this host</td>
+		<td> <input type="text" name="thisPublic_IPField" size="70" value="<? echo $thisPublic_IP; ?>">  </td> 
 	</tr>
 	<tr valign="top" height="20">
-		<td align="left"> <b> Network :  </b> </td>
-		<td> <input type="text" name="thisNetworkField" size="50" value="">  </td> 
+		<td align="left"><h3> Public MAC Address:</h3></td>
+		<td align="left">MAC address for an interface on Public net</td>
+		<td> <input type="text" name="thisPublic_MACField" size="70" value="<? echo $thisPublic_MAC; ?>">  </td> 
 	</tr>
 	<tr valign="top" height="20">
-		<td align="left"> <b> DMZ_IP :  </b> </td>
-		<td> <input type="text" name="thisDMZ_IPField" size="50" value="">  </td> 
+		<td align="left"><h3> Network Subnet Mask:</h3></td>
+		<td align="left">Mask for of the Public Network above</td>
+		<td> <input type="text" name="thisNetworkField" size="70" value="<? echo $thisNetwork; ?>">  </td> 
 	</tr>
 	<tr valign="top" height="20">
-		<td align="left"> <b> Mgmt_IP :  </b> </td>
-		<td> <input type="text" name="thisMgmt_IPField" size="50" value="">  </td> 
+		<td align="left"><h3> Network:</h3></td>
+		<td align="left">Network for of the publically-available services on this host in <a href="">CIDR notation.</a></td>
+		<td> <input type="text" name="thisNetworkField" size="70" value="<? echo $thisNetwork; ?>">  </td> 
 	</tr>
 	<tr valign="top" height="20">
-		<td align="left"> <b> Public_MAC :  </b> </td>
-		<td> <input type="text" name="thisPublic_MACField" size="10" value="">  </td> 
+		<td align="left"><h3> DMZ IP:</h3></td>
+		<td align="left">IP address for an interface in DMZ</td>
+		<td> <input type="text" name="thisDMZ_IPField" size="70" value="<? echo $thisDMZ_IP; ?>">  </td> 
 	</tr>
 	<tr valign="top" height="20">
-		<td align="left"> <b> DMZ_MAC :  </b> </td>
-		<td> <input type="text" name="thisDMZ_MACField" size="10" value="">  </td> 
+		<td align="left"><h3> DMZ MAC:</h3></td>
+		<td align="left">MAC address for an interface in DMZ</td>
+		<td> <input type="text" name="thisDMZ_MACField" size="70" value="<? echo $thisDMZ_MAC; ?>">  </td> 
 	</tr>
 	<tr valign="top" height="20">
-		<td align="left"> <b> MGMT_MAC :  </b> </td>
-		<td> <input type="text" name="thisMGMT_MACField" size="10" value="">  </td> 
+		<td align="left"><h3> Management Interface IP:</h3></td>
+		<td align="left">IP address for an interface on management LAN</td>
+		<td> <input type="text" name="thisMgmt_IPField" size="70" value="<? echo $thisMgmt_IP; ?>">  </td> 
 	</tr>
 	<tr valign="top" height="20">
-		<td align="left"> <b> Description :  </b> </td>
-		<td> <input type="text" name="thisDescriptionField" size="50" value="">  </td> 
+		<td align="left"><h3> MGMT MAC:</h3></td>
+		<td align="left">MAC address for an interface on management LAN</td>
+		<td> <input type="text" name="thisMGMT_MACField" size="70" value="<? echo $thisMGMT_MAC; ?>">  </td> 
 	</tr>
 	<tr valign="top" height="20">
-		<td align="left"> <b> ServiceTag :  </b> </td>
-		<td> <input type="text" name="thisServiceTagField" size="50" value="">  </td> 
+		<td align="left"><h3> Description:</h3></td>
+		<td align="left">Basic description of this host. (70 Characters)</td>
+		<td> <input type="text" name="thisDescriptionField" size="70" value="<? echo $thisDescription; ?>">  </td> 
 	</tr>
 	<tr valign="top" height="20">
-		<td align="left"> <b> Row :  </b> </td>
-		<td> <input type="text" name="thisRowField" size="50" value="">  </td> 
+		<td align="left"><h3> Service or Asset Tag:</h3></td>
+		<td align="left">Asset or Service tag (10 Characters)</td>
+		<td> <input type="text" name="thisServiceTagField" size="10" value="<? echo $thisServiceTag; ?>">  </td> 
 	</tr>
 	<tr valign="top" height="20">
-		<td align="left"> <b> Rack :  </b> </td>
-		<td> <input type="text" name="thisRackField" size="50" value="">  </td> 
+		<td align="left"><h3> Row:</h3></td>
+		<td align="left">Cabinet row at Datacenter above?></td>
+		<td> <input type="text" name="thisRowField" size="70" value="<? echo $thisRow; ?>">  </td> 
 	</tr>
 	<tr valign="top" height="20">
-		<td align="left"> <b> Slot :  </b> </td>
-		<td> <input type="text" name="thisSlotField" size="50" value="">  </td> 
+		<td align="left"><h3> Rack:</h3></td>
+		<td align="left">Rack unit in row referenced above:</td>
+		<td> <input type="text" name="thisRackField" size="70" value="<? echo $thisRack; ?>">  </td> 
+	</tr>
+	<tr valign="top" height="20">
+		<td align="left"><h3>Blade or Rack Slot:</h3></td>
+		<td align="left">Slot position for rack or chassis above:</td>
+		<td> <input type="text" name="thisSlotField" size="70" value="<? echo $thisSlot; ?>">  </td> 
 	</tr>
 </table>
 
-<input type="submit" name="submitEnterMainForm" value="Submit New Record">
-<input type="reset" name="resetForm" value="Clear Form">
-
+<input type="submit" name="submitEnterMainForm" value="Submit New Record" class="nice radius large blue button">
+<input type="submit" name="resetForm" value="Clear Form" class="nice radius large blue button">
 </form>
 
 <?php
