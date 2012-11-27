@@ -62,7 +62,11 @@ else if ($numberOfRows>0) {
 ?>
 
 <br><br>
+<<<<<<< HEAD
 <h3>It is recommended to edit this file before use, or filter with the search tool.</h3>
+=======
+<h1>Generated /etc/hosts</h1>
+>>>>>>> eb376487edc95e5dad7c61a0b9b07d3bd981e464
 <p>This file includes all hosts known to the system.</p>
 <TABLE CELLSPACING="0" CELLPADDING="3" BORDER="0" WIDTH="100%">
 			<a href="<? echo $PHP_SELF; ?>?sortBy=Public_IP&sortOrder=<? echo $newSortOrder; ?>&startLimit=<? echo $startLimit; ?>&rows=<? echo $limitPerPage; ?>">
