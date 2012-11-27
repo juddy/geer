@@ -1,0 +1,2 @@
+CURVER:0
+CURKEY:Avalon

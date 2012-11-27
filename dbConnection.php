@@ -1,9 +1,9 @@
 <?php
 
       $dbHostname = "mysql.beta.openlpos.org";
-      $dbUsername = "geer";
+      $dbUsername = "geeruser";
       $dbPassword = "no way no how";
-      $dbName     = "geerdev"; 
+      $dbName     = "geer"; 
        
       //  Make connection to database 
       //  If no connection made, display error Message          

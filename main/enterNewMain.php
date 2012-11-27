@@ -13,7 +13,7 @@ function slash_notation($thisPublic_IP, $mask) {
   return $thisPublic_IP."/".strlen(preg_replace("/0/", "", decbin(ip2long($mask)))); 
 } 
 
-$thisDC_Hostname = $_REQUEST['DC_HostnameField']
+$thisDC_Hostname = $_REQUEST['DC_HostnameField'
 $sql = "SELECT * FROM main WHERE DC_Hostname = '$thisDC_Hostname'";
 $result = MYSQL_QUERY($sql);
 $numberOfRows = MYSQL_NUMROWS($result);

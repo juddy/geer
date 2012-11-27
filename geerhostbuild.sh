@@ -77,23 +77,22 @@ EOF
 
 make_hostgroup1(){
 
-	echo "('AA', 'b01.co.us.lnx.p0$IP', 'host0$IP', 'demo.com', '', '192.168.1.$IP', '192.168.1/24', '192.168.10.$IP', '192.168.9.$IP','$(randmac)', '$(randmac)', '$(randmac)', 'Geer demo box', '$(randtag)', '1', 'A', '$SLOT')," | tee -a geer-data.sql
-	echo ; echo "--------------------"
+	echo "('AA', 'b01.co.us.lnx.p0$IP', 'host0$IP', 'demo.com', '', '192.168.1.$IP', '192.168.1/24', '192.168.10.$IP', '192.168.9.$IP','$(randmac)', '$(randmac)', '$(randmac)', 'Geer demo box', '$(randtag)', '1', 'A', '$SLOT')," >> geer-data.sql
 
 }
 
 make_hostgroup2(){
 
-	echo "('ZZ', 'd01.tx.us.lnx.d0$IP', 'dev-tx-0$IP', 'dev.demo.com', '', '192.168.3.$IP', '192.168.3/24', '192.168.13.$IP', '192.168.13.$IP','$(randmac)', '$(randmac)', '$(randmac)', 'Geer development box', '$(randtag)', '15', 'H', '$SLOT')," | tee -a geer-data.sql
-	echo ; echo "--------------------"
+	echo "('ZZ', 'd01.tx.us.lnx.d0$IP', 'dev-tx-0$IP', 'dev.demo.com', '', '192.168.3.$IP', '192.168.3/24', '192.168.13.$IP', '192.168.13.$IP','$(randmac)', '$(randmac)', '$(randmac)', 'Geer development box', '$(randtag)', '15', 'H', '$SLOT')," >> geer-data.sql
 
 }
 
+echo ; echo "Building hostgroup 1"
 while [ "$IP" -le "$ENDIP" ]
 do
-    echo "$IP of $ENDIP"
+    echo -e ".\c"
     make_hostgroup1
-	IP=$(expr $IP + 1 )
+    IP=$(expr $IP + 1 )
     SLOT=$IP
 done
 
@@ -103,11 +102,12 @@ IP=$BEGIP
 SLOT=$IP
 
 
+echo ; echo "Building hostgroup 2"
 while [ "$IP" -le "$ENDIP" ]
 do
-    echo "$IP of $ENDIP"
+    echo -e ".\c"
     make_hostgroup2
-	IP=$(expr $IP + 1 )
+    IP=$(expr $IP + 1 )
     SLOT=$IP
 done
 

@@ -1,6 +1,7 @@
 /* Geer default */
 
 body {
+background-color: #858587;
 margin: 0;
 font-family: lucida, verdana, arial, helvetica, sans-serif;
 color: black;
@@ -84,15 +85,37 @@ margin-left: 25px;
 }
 
 a:link, a:visited {
-color: #ffffff;
+
+display: inline-block;
+text-align: center;
+color: #fff;
 text-decoration: none;
-font-weight: normal;
-text-shadow: 1px 1px 1px #000;
+font-weight: bold;
+font-size: 13px;
+line-height: 1;
+font-family: "Helvetica Neue", "Helvetica", Arial, Verdana, sans-serif;
+position: relative;
+cursor: pointer;
+border: none;
+outline: none;
+margin: 0;
+/*text-shadow: 1px 1px 1px #000; */
 }
 
 a:hover {
-color: #ff6600;
+color: #fff;
 text-decoration: none;
+font-weight: bold;
+font-size: 13px;
+line-height: 1;
+font-family: "Helvetica Neue", "Helvetica", Arial, Verdana, sans-serif;
+position: relative;
+cursor: pointer;
+border: none;
+outline: none;
+margin: 0;
+/*text-shadow: 1px 1px 1px #000; */
+
 }
 
 
@@ -167,7 +190,8 @@ a {
 }
 
 form {
-	background-color: #ffffff;
+background-color: #858587;
+/*	background-color: #ffffff; */
         text-align: left;
 }
 
@@ -183,7 +207,7 @@ form {
 		color: #fff;
 		text-decoration: none;
 		font-weight: bold;
-		font-size: 13px; font-size: 1.3rem;
+		font-size: 13px; font-size: 1.3em;
 		line-height: 1;
 		font-family: "Helvetica Neue", "Helvetica", Arial, Verdana, sans-serif;
 		position: relative;

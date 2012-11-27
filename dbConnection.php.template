@@ -2,7 +2,7 @@
 
       $dbHostname = "DBHOSTNAME";
       $dbUsername = "DBUSER";
-      $dbPassword = "$DBPASS";
+      $dbPassword = "DBPASS";
       $dbName     = "DBNAME"; 
        
       //  Make connection to database 
