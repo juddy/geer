@@ -11,7 +11,7 @@ The presentation and concept was mostly taken from ipcalc.pl.
 <head>
 <link rel="stylesheet" href="../common/register_style.css" type="text/css">
 </head>
-<div id="main-title"><a href="http://dev.geer.openlpos.org/index.php"><img src=../app.png></a></div>
+<div id="main-title"><a href="../index.php"><img src=../app.png></a></div>
   <title>Subnet Tool</title>
   <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 </head>
