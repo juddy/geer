@@ -15,11 +15,15 @@ What it is:
 - MAC Addresses
 - Network range
 - IP addresses for 3 networks
-
+- Internal authentication system - connect with LDAP via mod_authz or similar.
 
 MySQL database is supported, connection details are in common/dbConnection.php
 
-Demo database is included, schema below
+What it isn't:
+
+- Production ready
+- Supported
+- A fully-functional tool
 
 ***
 
@@ -31,9 +35,10 @@ Abundant.
 
 # USE:
 
-Create a database for use with Geer.  A dump is available in geer-data.sql.gz.  Restoring this data creates a table 'main'.  The 'geer' database and 'main' table should be available to a 'geer' user.
+Run the installer script 'install.sh'
 
-Change common/dbConnection.php to suit your needs.  
+This script will collect some details related to the install process.  Database server, database name, database user & password, hostname, etc.
+It will modify the necessary files (hopefully) and populate the database with either a stub of the 'main' table, or a table populated with two datacenters - each with 254 unique hosts.
 
 
 ***
@@ -44,16 +49,18 @@ Incorporate contemporary CSS and JS frameworks
 
 Make hosts file generator prompt for file download or provide URL to encrypted file
 
+Integrate Puppet/Chef configuration
+
 ***
 
 # CHANGELOG:
 
+* Minor cosmetic fixes
+* Added an IP calculator tool
 * Added authentication and registration system
 * Schema changes - field extensions
 * More complete SQL dump
-
 * Added Cisco DHCP Pool static mapping support
-Mon Aug  1 14:51:17 PDT 2011
 
 ***
 
