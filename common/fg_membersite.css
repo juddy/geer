@@ -5,7 +5,7 @@ You can customize all the aspects of the form in this style sheet
 
 #fg_membersite fieldset
 {
-  background-color : #858587;
+   background-color : #ffff00;
    width: 600px;
    padding:30px;
    border:1px solid #ccc;
@@ -21,7 +21,6 @@ border-radius: 10px;
    font-size: 22px;
    font-weight:bold;
    color:#333;
-   background-color : #858587;
 }
 
 #fg_membersite label
@@ -60,12 +59,6 @@ border-radius: 10px;
   height:30px;
 }
 
-#fg_membersite input[type="submit"]
-{
-   width:100px;
-   height:30px;
-   padding-left:0px;
-}
 
 #fg_membersite textarea
 {
@@ -78,7 +71,6 @@ border-radius: 10px;
 {
   color : #009;
   border : 1px solid #990000;
-  background-color : #858587;
   font-weight:bold;
 }
 
@@ -86,7 +78,7 @@ border-radius: 10px;
 {
    margin-top:8px;
    margin-bottom: 10px;
-   background-color : #858587;
+   background-color : #ffff00;
 }
 
 #fg_membersite .error
@@ -110,7 +102,6 @@ border-radius: 10px;
    border-right:0;
    border-bottom:0;
    width:350px;
-  background-color : #858587;
 }
 
 #fg_membersite fieldset#antispam legend
@@ -119,7 +110,6 @@ border-radius: 10px;
    font-size: 16px;
    font-weight:bold;
    color:#333;   
-  background-color : #858587;
 }
 
 #fg_membersite .short_explanation

@@ -9,7 +9,7 @@ What it is:
 'geer' is a Quick-n-Dirty TM host management application. Essentially, a web-accessible tool to manage a simple systems database:
 
 - Datacenter Hostname
-- Colloqioal Hostname
+- Colloquial Hostname
 - DNS CNAME
 - Plain English system description
 - MAC Addresses
@@ -48,6 +48,7 @@ Make hosts file generator prompt for file download or provide URL to encrypted f
 
 # CHANGELOG:
 
+* Added authentication and registration system
 * Schema changes - field extensions
 * More complete SQL dump
 

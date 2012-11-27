@@ -1,7 +1,7 @@
 <?php
 include_once("../common/dbConnection.php");
 include_once("../common/header.php");
-require_once("./include/membersite_config.php");
+require_once("../include/membersite_config.php");
 
 if(!$fgmembersite->CheckLogin())
 {
@@ -61,11 +61,8 @@ else if ($numberOfRows>0) {
 	$i=0;
 ?>
 
-
-<br>
-
 <br><br>
-<h1>Generated /etc/hosts</h1>
+<h3>It is recommended to edit this file before use, or filter with the search tool.</h3>
 <p>This file includes all hosts known to the system.</p>
 <TABLE CELLSPACING="0" CELLPADDING="3" BORDER="0" WIDTH="100%">
 			<a href="<? echo $PHP_SELF; ?>?sortBy=Public_IP&sortOrder=<? echo $newSortOrder; ?>&startLimit=<? echo $startLimit; ?>&rows=<? echo $limitPerPage; ?>">
