@@ -141,6 +141,11 @@ sed -i "s/DBHOSTNAME/$DBHOSTNAME/g" dbConnection.php
 sed -i "s/SITENAME/$SITENAME/g" dbConnection.php
 }
 
+header(){
+echo "Configuring common php header.."
+cp common/header.php.template common/header.php
+sed -i "s/SITENAME/$SITENAME/g" common/header.php 
+}
 
 fg_membership(){
 echo "Configuring user management connection.."
