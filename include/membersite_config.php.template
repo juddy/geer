@@ -16,7 +16,7 @@ $fgmembersite->SetAdminEmail('ADMINEMAIL');
 $fgmembersite->InitDB(/*hostname*/'DBHOSTNAME',
                       /*username*/'DBUSER',
                       /*password*/'DBPASS',
-                      /*database name*/'$DBNAME',
+                      /*database name*/'DBNAME',
                       /*table name*/'fgusers3');
 
 //For better security. Get a random string from this link: http://tinyurl.com/randstr
