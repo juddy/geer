@@ -8,6 +8,7 @@
 #################################
 
 #set -x
+source ./details.txt ; echo $DBNAME
 
 check_details(){
 # Display the configuration so far
@@ -94,7 +95,7 @@ check_details
 read_details(){
 if [ -f details.txt ]
 then
-	source details.txt
+	source ./details.txt
 	# Display the configuration so far
 	echo "Using the following configuration details:"
 	echo "DBNAME:$DBNAME"
@@ -114,7 +115,7 @@ then
 			;;
 			
 			*)
-				echo "Moving on with your details.  If you need to reconfigure, please run $0 again."
+				echo "Moving on..."
 			;;
 		esac
 else
@@ -131,7 +132,7 @@ fi
 read_details
 
 # and move on to..
-set -x
+#set -x
 db_connection(){
 echo "Configuring geer's database connection.."
 cp dbConnection.php.template dbConnection.php
@@ -147,10 +148,10 @@ cp common/header.php.template common/header.php
 sed -i "s/SITENAME/$SITENAME/g" common/header.php 
 }
 
-fg_membership(){
+fg_membersite(){
 echo "Configuring user management connection.."
 
-#fg_membership.php
+#fg_membersite.php
 cp include/fg_membersite.php.template  include/fg_membersite.php
 if [ $? -ne 0 ]
 then 
@@ -159,10 +160,10 @@ then
 	exit 1
 else
 	echo "Creating from fg_membersite.php.template..."
-	sed -i "s/DBUSER/$DBUSER/g" include/fg_membership.php
-	sed -i "s/DBNAME/$DBNAME/g" include/fg_membership.php
-	sed -i "s/DBHOSTNAME/$DBHOSTNAME/g" include/fg_membership.php
-	sed -i "s/SITENAME/$SITENAME/g" include/fg_membership.php
+	sed -i "s/DBUSER/$DBUSER/g" include/fg_membersite.php
+	sed -i "s/DBNAME/$DBNAME/g" include/fg_membersite.php
+	sed -i "s/DBHOSTNAME/$DBHOSTNAME/g" include/fg_membersite.php
+	sed -i "s/SITENAME/$SITENAME/g" include/fg_membersite.php
 fi
 
 #membersite_config.php
@@ -182,7 +183,8 @@ fi
 }
 
 make_sql_stub(){
- cat << EOF > geer-data.sql
+
+cat << EOF > geer-data.sql
  
 SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO"; 
  
@@ -193,47 +195,48 @@ SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 /*!40101 SET NAMES utf8 */; 
  
 -- 
--- Database: `$DBNAME` 
+-- Database: '$DBNAME' 
 -- 
  
 -- -------------------------------------------------------- 
  
 -- 
--- Table structure for table `main` 
+-- Table structure for table 'main' 
 -- 
  
-CREATE TABLE IF NOT EXISTS `main` ( 
-  `Datacenter` varchar(2) DEFAULT NULL, 
-  `DC_Hostname` varchar(28) DEFAULT NULL, 
-  `Clql_Hostname` varchar(11) DEFAULT NULL, 
-  `Domain_Name` varchar(8) DEFAULT NULL, 
-  `CNAME` varchar(10) DEFAULT NULL, 
-  `Public_IP` varchar(14) DEFAULT NULL, 
-  `Network` varchar(16) DEFAULT NULL, 
-  `DMZ_IP` varchar(13) DEFAULT NULL, 
-  `Mgmt_IP` varchar(12) DEFAULT NULL, 
-  `Public_MAC` varchar(10) DEFAULT NULL, 
-  `DMZ_MAC` varchar(10) DEFAULT NULL, 
-  `MGMT_MAC` varchar(10) NOT NULL DEFAULT '', 
-  `Description` varchar(48) DEFAULT NULL, 
-  `ServiceTag` varchar(10) DEFAULT NULL, 
-  `Row` varchar(1) DEFAULT NULL, 
-  `Rack` varchar(1) DEFAULT NULL, 
-  `Slot` varchar(10) DEFAULT NULL, 
-  PRIMARY KEY (`MGMT_MAC`) 
+CREATE TABLE IF NOT EXISTS 'main' ( 
+  'Datacenter' varchar(2) DEFAULT NULL, 
+  'DC_Hostname' varchar(28) DEFAULT NULL, 
+  'Clql_Hostname' varchar(11) DEFAULT NULL, 
+  'Domain_Name' varchar(8) DEFAULT NULL, 
+  'CNAME' varchar(10) DEFAULT NULL, 
+  'Public_IP' varchar(14) DEFAULT NULL, 
+  'Network' varchar(16) DEFAULT NULL, 
+  'DMZ_IP' varchar(13) DEFAULT NULL, 
+  'Mgmt_IP' varchar(12) DEFAULT NULL, 
+  'Public_MAC' varchar(10) DEFAULT NULL, 
+  'DMZ_MAC' varchar(10) DEFAULT NULL, 
+  'MGMT_MAC' varchar(10) NOT NULL DEFAULT '', 
+  'Description' varchar(48) DEFAULT NULL, 
+  'ServiceTag' varchar(10) DEFAULT NULL, 
+  'Row' varchar(1) DEFAULT NULL, 
+  'Rack' varchar(1) DEFAULT NULL, 
+  'Slot' varchar(10) DEFAULT NULL, 
+  PRIMARY KEY ('MGMT_MAC') 
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8; 
  
 -- 
--- Dumping data for table `main` 
+-- Dumping data for table 'main' 
 -- 
-INSERT INTO `main` (`Datacenter`, `DC_Hostname`, `Clql_Hostname`, `Domain_Name`, `CNAME`, `Public_IP`, `Network`, `DMZ_IP`, `Mgmt_IP`, `Public_MAC`, `DMZ_MAC`, `MGMT_MAC`, `Description`, `ServiceTag`, `Row`, `Rack`, `Slot`) VALUES 
-EOF 
+INSERT INTO 'main' ('Datacenter', 'DC_Hostname', 'Clql_Hostname', 'Domain_Name', 'CNAME', 'Public_IP', 'Network', 'DMZ_IP', 'Mgmt_IP', 'Public_MAC', 'DMZ_MAC', 'MGMT_MAC', 'Description', 'ServiceTag', 'Row', 'Rack', 'Slot') VALUES 
+
+EOF
 }
 
 load_example_data(){
-echo "Create and upload example data?"
+echo "Create and upload example data? (y/*)"
 read ans
-case ans in
+case $ans in
 
 	y)
 		echo "Creating example data.."
@@ -251,5 +254,5 @@ esac
 }
 
 db_connection
-fg_membership
+fg_membersite
 load_example_data
