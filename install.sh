@@ -1,7 +1,6 @@
 #!/bin/bash
-#
 # geer installer
-# Mon Nov 26 19:56:52 PST 2012
+# Wed Oct 22 22:12:14 PDT 2014
 #
 # william@a9group.net
 #
@@ -14,6 +13,7 @@ check_details(){
 # Display the configuration so far
 echo "Using the following configuration details:"
 echo "DBNAME:$DBNAME"
+echo "DBHOST:$DBHOST"
 echo "DBUSER:$DBUSER"
 echo "DBPASS:$DBPASS"
 echo "DBHOSTNAME:$DBHOSTNAME"
@@ -34,7 +34,7 @@ read key
 			echo "Moving on with your details.  If you need to reconfigure, please run $0 again."
 			echo "DBNAME=$DBNAME" | tee -a details.txt
 			echo "DBUSER=$DBUSER" | tee -a details.txt
-			echo "DBPASS='$DBPASS'" | tee -a details.txt
+			echo "DBPASS="$DBPASS"" | tee -a details.txt
 			echo "DBHOSTNAME=$DBHOSTNAME" | tee -a details.txt
 			echo "SITENAME=$SITENAME" | tee -a details.txt
 			echo "ADMINEMAIL=$ADMINEMAIL" | tee -a details.txt
@@ -55,7 +55,7 @@ read NEWDBUSER
 if [ -n $NEWDBUSER ]
 then
 	DBUSER="geeruser"
-	echo "Using the default - 'geeruser'"
+	echo "Using the default - "geeruser""
 else
 	DBUSER=$NEWDBUSER
 fi
@@ -72,7 +72,7 @@ read NEWDBNAME
 if [ -n $NEWDBNAME ]
 then
 	DBNAME="geer"
-	echo "Using the default - 'geer'"
+	echo "Using the default - "geer""
 else
 	DBNAME=$NEWDBNAME
 fi
@@ -134,7 +134,7 @@ read_details
 # and move on to..
 #set -x
 db_connection(){
-echo "Configuring geer's database connection.."
+echo "Configuring geer"s database connection.."
 cp dbConnection.php.template dbConnection.php
 sed -i "s/DBUSER/$DBUSER/g" dbConnection.php
 sed -i "s/DBNAME/$DBNAME/g" dbConnection.php
@@ -195,46 +195,46 @@ SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 /*!40101 SET NAMES utf8 */; 
  
 -- 
--- Database: '$DBNAME' 
+-- Database: "$DBNAME" 
 -- 
  
 -- -------------------------------------------------------- 
  
 -- 
--- Table structure for table 'main' 
+-- Table structure for table "main" 
 -- 
  
-CREATE TABLE IF NOT EXISTS 'main' ( 
-  'Datacenter' varchar(2) DEFAULT NULL, 
-  'DC_Hostname' varchar(28) DEFAULT NULL, 
-  'Clql_Hostname' varchar(11) DEFAULT NULL, 
-  'Domain_Name' varchar(8) DEFAULT NULL, 
-  'CNAME' varchar(10) DEFAULT NULL, 
-  'Public_IP' varchar(14) DEFAULT NULL, 
-  'Network' varchar(16) DEFAULT NULL, 
-  'DMZ_IP' varchar(13) DEFAULT NULL, 
-  'Mgmt_IP' varchar(12) DEFAULT NULL, 
-  'Public_MAC' varchar(10) DEFAULT NULL, 
-  'DMZ_MAC' varchar(10) DEFAULT NULL, 
-  'MGMT_MAC' varchar(10) NOT NULL DEFAULT '', 
-  'Description' varchar(48) DEFAULT NULL, 
-  'ServiceTag' varchar(10) DEFAULT NULL, 
-  'Row' varchar(1) DEFAULT NULL, 
-  'Rack' varchar(1) DEFAULT NULL, 
-  'Slot' varchar(10) DEFAULT NULL, 
-  PRIMARY KEY ('MGMT_MAC') 
+CREATE TABLE IF NOT EXISTS "main" ( 
+  "Datacenter" varchar(2) DEFAULT NULL, 
+  "DC_Hostname" varchar(28) DEFAULT NULL, 
+  "Clql_Hostname" varchar(11) DEFAULT NULL, 
+  "Domain_Name" varchar(8) DEFAULT NULL, 
+  "CNAME" varchar(10) DEFAULT NULL, 
+  "Public_IP" varchar(14) DEFAULT NULL, 
+  "Network" varchar(16) DEFAULT NULL, 
+  "DMZ_IP" varchar(13) DEFAULT NULL, 
+  "Mgmt_IP" varchar(12) DEFAULT NULL, 
+  "Public_MAC" varchar(10) DEFAULT NULL, 
+  "DMZ_MAC" varchar(10) DEFAULT NULL, 
+  "MGMT_MAC" varchar(10) NOT NULL DEFAULT "", 
+  "Description" varchar(48) DEFAULT NULL, 
+  "ServiceTag" varchar(10) DEFAULT NULL, 
+  "Row" varchar(1) DEFAULT NULL, 
+  "Rack" varchar(1) DEFAULT NULL, 
+  "Slot" varchar(10) DEFAULT NULL, 
+  PRIMARY KEY ("MGMT_MAC") 
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8; 
  
 -- 
--- Dumping data for table 'main' 
+-- Dumping data for table "main" 
 -- 
-INSERT INTO 'main' ('Datacenter', 'DC_Hostname', 'Clql_Hostname', 'Domain_Name', 'CNAME', 'Public_IP', 'Network', 'DMZ_IP', 'Mgmt_IP', 'Public_MAC', 'DMZ_MAC', 'MGMT_MAC', 'Description', 'ServiceTag', 'Row', 'Rack', 'Slot') VALUES 
+INSERT INTO "main" ("Datacenter", "DC_Hostname", "Clql_Hostname", "Domain_Name", "CNAME", "Public_IP", "Network", "DMZ_IP", "Mgmt_IP", "Public_MAC", "DMZ_MAC", "MGMT_MAC", "Description", "ServiceTag", "Row", "Rack", "Slot") VALUES 
 
 EOF
 }
 
 load_example_data(){
-echo "Create and upload example data? (y/*)"
+echo "Create and upload example data? "
 read ans
 case $ans in
 
@@ -247,7 +247,7 @@ case $ans in
 
 	*)
 		echo "Generating data stub.."
-		# Defined above - only called if we don't want to populate with the dample data.
+		# Defined above - only called if we don"t want to populate with the dample data.
 		make_sql_stub
 	;;
 esac

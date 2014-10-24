@@ -112,7 +112,7 @@ check_details
 read_details(){
 if [ -f details.txt ]
 then
-	source details.txt
+	source ./details.txt
 	# Display the configuration so far
 	echo "Using the following configuration details:"
 	echo "DBNAME:$DBNAME"
@@ -248,12 +248,13 @@ read ans
 case $ans in
 
 	y)
+		source ./details.txt
 		echo "Creating and loading example data.."
 		echo "You may modify geerhostbuild.sh for your environment and create a data file with your own parameters."
 		echo "Building out two datacenters; AA and ZZ with 254 example hosts..."
 		sh geerhostbuild.sh 
 		echo "Loading sample data into $DBNAME on $DBHOST as $DBUSER"
-		mysql -h$DBHOST -u$DBUSER -p"$DBPASS" $DBNAME < geer-data.sql
+		mysql -h$DBHOSTNAME -u$DBUSER -p"$DBPASS" $DBNAME < geer-data.sql
 	;;
 
 	*)
@@ -271,7 +272,7 @@ load_example_data
 
 echo "geer is configured."
 echo "Load the data stub with:"
-echo "  mysql -h$DBHOST u$DBUSER -p'$DBPASS' $DBNAME < geer-data.sql"
+echo "  mysql -h$DBHOSTNAME u$DBUSER -p'$DBPASS' $DBNAME < geer-data.sql"
 echo ; echo
 echo "Get help by emailing geerhelp@a9group.net"
 echo ; echo "--------------------------------------------------" ; echo ; echo

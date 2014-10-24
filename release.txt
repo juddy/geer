@@ -1,2 +1,2 @@
-CURVER:0
-CURKEY:Avalon
+CURVER:1
+CURKEY:Barbados

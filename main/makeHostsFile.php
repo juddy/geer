@@ -1,13 +1,7 @@
 <?php
 include_once("../common/dbConnection.php");
 include_once("../common/header.php");
-require_once("../include/membersite_config.php");
 
-if(!$fgmembersite->CheckLogin())
-{
-    $fgmembersite->RedirectToURL("login.php");
-    exit;
-}
 
 $initStartLimit = 0;
 $limitPerPage = 999;
@@ -62,14 +56,13 @@ else if ($numberOfRows>0) {
 ?>
 
 <br><br>
-<<<<<<< HEAD
+
 <h3>It is recommended to edit this file before use, or filter with the search tool.</h3>
-=======
-<h1>Generated /etc/hosts</h1>
->>>>>>> eb376487edc95e5dad7c61a0b9b07d3bd981e464
+<h1>Generated hosts file:</h1>
 <p>This file includes all hosts known to the system.</p>
 <TABLE CELLSPACING="0" CELLPADDING="3" BORDER="0" WIDTH="100%">
-			<a href="<? echo $PHP_SELF; ?>?sortBy=Public_IP&sortOrder=<? echo $newSortOrder; ?>&startLimit=<? echo $startLimit; ?>&rows=<? echo $limitPerPage; ?>">
+			<a href="
+			<? echo $PHP_SELF; ?>?sortBy=Public_IP&sortOrder=<? echo $newSortOrder; ?>&startLimit=<? echo $startLimit; ?>&rows=<? echo $limitPerPage; ?>">
 				<B>IP</B>
 			</a>
 </TD>
@@ -109,39 +102,67 @@ else if ($numberOfRows>0) {
 	$thisRow = MYSQL_RESULT($result,$i,"Row");
 	$thisRack = MYSQL_RESULT($result,$i,"Rack");
 	$thisSlot = MYSQL_RESULT($result,$i,"Slot");
+    //add this record to the hosts file stub
+?>
 
-?>
-<?
-$myHostsFile = "hosts";
-$fh = fopen($myHostsFile, 'w') or die("Can't open hosts file for writing.");
-?>
 	<TR BGCOLOR="<? echo $bgColor; ?>">
 	
 		<TD><? echo $thisPublic_IP; ?></TD>
 		<TD><? echo "$thisClql_Hostname.$thisDomain_Name"; ?><a href="listGridMain.php?action=Edit&thisDC_HostnameField=<? echo $thisDC_Hostname; ?>"><? echo "&nbsp;&nbsp;&nbsp;&nbsp;$thisDC_Hostname"; ?></a></TD>
 		<TD><? echo "#$thisDescription"; ?></TD>
+        <?
+        $myFile = "./hosts/hosts";
+        $stringData = "$thisPublic_IP    $thisClql_Hostname.$thisDomain_Name";
+        file_put_contents($myFile,$stringData, FILE_APPEND | LOCK_EX);?>
 	</TR>
 	<TR BGCOLOR="<? echo $bgColor; ?>">
 		<TD><? echo $thisDMZ_IP; ?></TD>
 		<TD><? echo "$thisCNAME.$thisDomain_Name"; ?></TD>
 		<TD><? echo "#$thisDescription - on DMZ/VPN"; ?></TD>
+        <?
+        $myFile = "./hosts/hosts";
+        $stringData = "$thisDMZ_IP    $thisCNAME.$thisDomain_Name  #$thisDescription";
+        file_put_contents($myFile,$stringData, FILE_APPEND | LOCK_EX);?>
 	</TR>
 	<TR BGCOLOR="<? echo $bgColor; ?>">
 		<TD><? echo $thisMgmt_IP; ?></TD>
 		<TD><? echo "$thisClql_Hostname"; ?></TD>
 		<TD><? echo "#$thisDescription - CNAME - on BUP/MGMT LAN"; ?></TD>
 	</TR>
-	<? fclose($fh); ?>
-<?
+        <?
+
 		$i++;
 
 	} // end while loop
+
 ?>
 </TABLE>
-
-
 <br>
-<br><br>
 <?
 } // end of if numberOfRows > 0 
 ?>
+<?php
+if (isset($_POST['button']))
+{
+    if (file_exists($myFile)) {
+        header('Content-Description: File Transfer');
+        header('Content-Type: application/octet-stream');
+        header('Content-Disposition: attachment; filename='.basename($myFile));
+        header('Expires: 0');
+        header('Cache-Control: must-revalidate');
+        header('Pragma: public');
+        header('Content-Length: ' . filesize($myFile));
+        readfile($myFile);
+        exit;
+    }
+}
+?>
+
+<html>
+<body>
+<form method="post">
+    <p>
+        <button name="button">Download hosts</button>
+    </p>
+</form>
+</body>

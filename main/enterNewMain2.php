@@ -18,7 +18,6 @@ $result = MYSQL_QUERY($sql);
 $numberOfRows = MYSQL_NUMROWS($result);
 if ($numberOfRows==0) {  
 ?>
-
 Sorry. No records found !!
 
 <?php
@@ -47,7 +46,7 @@ else if ($numberOfRows>0) {
 }
 ?>
 
-<h2>Update Hardware</h2>
+<h2>Update Records</h2>
 <form name="mainUpdateForm" method="POST" action="updateMain.php">
 
 <table cellspacing="2" cellpadding="2" border="0" width="800">

@@ -21,7 +21,7 @@ if(isset($_POST['submitted']))
 <head>
       <meta http-equiv='Content-Type' content='text/html; charset=utf-8'/>
       <title>Change password</title>
-      <div id="main-title"><a href="http://dev.geer.openlpos.org/index.php"><img src=app.png></a></div>
+      <div id="main-title"><a href="index.php"><img src=app.png></a></div>
       <link rel="STYLESHEET" type="text/css" href="common/register_style.css" />
       <script type='text/javascript' src='scripts/gen_validatorv31.js'></script>
       <link rel="STYLESHEET" type="text/css" href="style/pwdwidget.css" />

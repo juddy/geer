@@ -17,7 +17,7 @@ if(isset($_POST['submitted']))
 <head>
 
       <meta http-equiv='Content-Type' content='text/html; charset=utf-8'/>
-      <div id="main-title"><a href="http://demo.geer.openlpos.org/index.html"><img src=app.png></a></div>
+      <div id="main-title"><a href="index.html"><img src=app.png></a></div>
       <title>Reset Password Request</title>
       <link rel="STYLESHEET" type="text/css" href="common/register_style.css" />
       <script type='text/javascript' src='scripts/gen_validatorv31.js'></script>

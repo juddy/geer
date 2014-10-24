@@ -1,6 +1,6 @@
 DBNAME=geer
 DBUSER=geeruser
-DBPASS='no way no how'
-DBHOSTNAME=mysql.beta.openlpos.org
-SITENAME=dev.geer.openlpos.org
+DBPASS='funky good times'
+DBHOSTNAME=localhost
+SITENAME=geer.home.a9group.net
 ADMINEMAIL=admin@localhost

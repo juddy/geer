@@ -28,7 +28,7 @@ $sql = "UPDATE main SET Datacenter = '$thisDatacenter' , DC_Hostname = '$thisDC_
 $result = MYSQL_QUERY($sql);
 
 ?>
-Record  has been updated in the database. Here is the updated information :- <br><br>
+<h2>Record  has been updated in the database. Here is the updated information :</h2> <br><br>
 
 <table>
 <tr height="30">
@@ -40,19 +40,19 @@ Record  has been updated in the database. Here is the updated information :- <br
 	<td><? echo $thisDC_Hostname; ?></td>
 </tr>
 <tr height="30">
-	<td align="right"><b>Clql_Hostname : </b></td>
+	<td align="right"><b>Colloquial Hostname : </b></td>
 	<td><? echo $thisClql_Hostname; ?></td>
 </tr>
 <tr height="30">
-	<td align="right"><b>Domain_Name : </b></td>
+	<td align="right"><b>Domain Name : </b></td>
 	<td><? echo $thisDomain_Name; ?></td>
 </tr>
 <tr height="30">
-	<td align="right"><b>CNAME : </b></td>
+	<td align="right"><b>DNS CNAME : </b></td>
 	<td><? echo $thisCNAME; ?></td>
 </tr>
 <tr height="30">
-	<td align="right"><b>Public_IP : </b></td>
+	<td align="right"><b>Public IP : </b></td>
 	<td><? echo $thisPublic_IP; ?></td>
 </tr>
 <tr height="30">
@@ -60,23 +60,23 @@ Record  has been updated in the database. Here is the updated information :- <br
 	<td><? echo $thisNetwork; ?></td>
 </tr>
 <tr height="30">
-	<td align="right"><b>DMZ_IP : </b></td>
+	<td align="right"><b>DMZ IP : </b></td>
 	<td><? echo $thisDMZ_IP; ?></td>
 </tr>
 <tr height="30">
-	<td align="right"><b>Mgmt_IP : </b></td>
+	<td align="right"><b>Mgmt IP : </b></td>
 	<td><? echo $thisMgmt_IP; ?></td>
 </tr>
 <tr height="30">
-	<td align="right"><b>Public_MAC : </b></td>
+	<td align="right"><b>Public MAC : </b></td>
 	<td><? echo $thisPublic_MAC; ?></td>
 </tr>
 <tr height="30">
-	<td align="right"><b>DMZ_MAC : </b></td>
+	<td align="right"><b>DMZ MAC : </b></td>
 	<td><? echo $thisDMZ_MAC; ?></td>
 </tr>
 <tr height="30">
-	<td align="right"><b>MGMT_MAC : </b></td>
+	<td align="right"><b>MGMT MAC : </b></td>
 	<td><? echo $thisMGMT_MAC; ?></td>
 </tr>
 <tr height="30">
@@ -84,7 +84,7 @@ Record  has been updated in the database. Here is the updated information :- <br
 	<td><? echo $thisDescription; ?></td>
 </tr>
 <tr height="30">
-	<td align="right"><b>ServiceTag : </b></td>
+	<td align="right"><b>Service Tag : </b></td>
 	<td><? echo $thisServiceTag; ?></td>
 </tr>
 <tr height="30">

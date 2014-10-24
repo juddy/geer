@@ -1,6 +1,3 @@
-http://demo.geer.openlpos.org
-
-<wjkennedy@openlpos.org>
 
 ***
 
@@ -9,7 +6,7 @@ What it is:
 'geer' is a Quick-n-Dirty TM host management application. Essentially, a web-accessible tool to manage a simple systems database:
 
 - Datacenter Hostname
-- Colloquial Hostname
+- "Colloquial" Hostname (this is not in the RFC, it's *what you guys call the box*)
 - DNS CNAME
 - Plain English system description
 - MAC Addresses
